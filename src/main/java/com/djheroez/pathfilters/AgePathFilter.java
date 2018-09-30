@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Path;
 
-import org.apache.commons.io.FileUtils;
+import com.djheroez.pathfilters.util.FileUtils;
 
 public class AgePathFilter implements DirectoryStream.Filter<Path>
 {
-
     private long cutoff;
     private boolean acceptOlder;
 

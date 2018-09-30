@@ -6,8 +6,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.collections4.CollectionUtils;
-
 public class AndPathFilter implements DirectoryStream.Filter<Path>
 {
     private final List<DirectoryStream.Filter<Path>> pathFilters;
@@ -25,7 +23,7 @@ public class AndPathFilter implements DirectoryStream.Filter<Path>
     @Override
     public boolean accept(Path entry) throws IOException
     {
-        if(CollectionUtils.isEmpty(this.pathFilters))
+        if(this.pathFilters == null || this.pathFilters.isEmpty())
         {
             return false;
         }
