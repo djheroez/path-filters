@@ -6,23 +6,21 @@ import java.nio.file.Path;
 
 import com.djheroez.pathfilters.util.FileUtils;
 
-public class AgePathFilter implements DirectoryStream.Filter<Path>
-{
+public class AgePathFilter implements DirectoryStream.Filter<Path> {
     private long cutoff;
     private boolean acceptOlder;
 
     public AgePathFilter(long cutoff) {
         this(cutoff, true);
     }
-    
+
     public AgePathFilter(long cutoff, boolean acceptOlder) {
         this.acceptOlder = acceptOlder;
         this.cutoff = cutoff;
     }
 
     @Override
-    public boolean accept(Path entry) throws IOException
-    {
+    public boolean accept(Path entry) throws IOException {
         boolean newer = FileUtils.isFileNewer(entry.toFile(), this.cutoff);
         return acceptOlder ? !newer : newer;
     }
